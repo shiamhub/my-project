@@ -3,7 +3,7 @@ import logo from '../../images/Logo.svg'
 
 const Header = () => {
     return (
-        <nav className='bg-zinc-700 flex items-center justify-between p-4 px-24'>
+        <nav className='bg-zinc-700 flex fixed top-0 left-0 right-0 items-center justify-between p-4 px-24'>
             <img src={logo} alt="" />
             <div className='text-cyan-50 flex gap-6'>
                 <a href="/Order">Order</a>
