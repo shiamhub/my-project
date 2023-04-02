@@ -6,6 +6,7 @@ import Card from '../Card/Card';
 const Shop = () => {
     const [data, setData] = useState([]);
     const [myProduct, setMyProduct] = useState([]);
+    const [reItem, setReItem] = useState(false);
     // console.log(myProduct);
     useEffect(() => {
         fetch('products.json')
@@ -26,8 +27,8 @@ const Shop = () => {
             };
         };
         setMyProduct(saveCard);
-    }, [data]);
-    
+    }, [data, reItem]);
+
     const addToCard = (product) => {
         console.log(product)
         // setMyProduct([...myProduct, product]);
@@ -50,17 +51,19 @@ const Shop = () => {
     
     const deleteItem = (product) => {
         // const getId = myProduct.find(p => p.id === product.id);
-        removeFromDb(product.id)
+        removeFromDb(product.id);
+        setReItem(!reItem);
+
     }
 
     return (
         <div className='flex mt-28'>
-            <div className='pl-24 pr-6 w-4/5 grid grid-cols-3 gap-5'>
+            <div className='md:pl-24 p-4 md:pr-6 w-2/3 md:w-4/5 md:grid md:grid-cols-3 gap-5'>
                 {
                     data.map(p => <Card addToCard={addToCard} deleteItem={deleteItem} product={p} key={p.id}></Card>)
                 }
             </div>
-            <div className='w-1/5 fixed top-[75px] right-0 h-screen bg-lime-200'>
+            <div className='md:w-1/5 w-1/3 fixed top-[75px] right-0 h-screen bg-lime-200'>
                 <AddToCard addToCard={myProduct}></AddToCard>
             </div>
         </div>
