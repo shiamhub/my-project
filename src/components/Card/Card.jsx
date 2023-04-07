@@ -12,14 +12,14 @@ const Card = (props) => {
     return (
         <div className='border-2 rounded-xl'>
             <img className='rounded-xl p-2' src={img} alt="" />
-            <div className='ml-2'>
+            <div className='ml-2 flex flex-col gap-2'>
                 <h4>{name}</h4>
                 <h6>Price: ${price}</h6>
                 <p>Manufacturer: {seller}</p>
                 <p>Rating: {ratings}start</p>
             </div>
-            <button onClick={() => addToCard(props.product)} className='bg-[#FFE0B3] w-full py-3 hover:bg-amber-500'>Add to Card<FontAwesomeIcon icon={faShoppingCart} /></button>
-            <button onClick={() => deleteItem(props.product)} className='bg-[#FFE0B3] rounded-b-xl w-full py-3 mt-4 hover:bg-amber-500'>remove to Card<FontAwesomeIcon icon={faShoppingCart} /></button>
+            <button onClick={() => addToCard(props.product)} className='bg-[#FFE0B3] mt-3 rounded-b-xl w-full py-3 hover:bg-amber-500'>Add to Card<FontAwesomeIcon icon={faShoppingCart} /></button>
+            {/* <button onClick={() => deleteItem(props.product)} className='bg-[#FFE0B3] rounded-b-xl w-full py-3 mt-4 hover:bg-amber-500'>remove to Card<FontAwesomeIcon icon={faShoppingCart} /></button> */}
         </div>
     );
 };

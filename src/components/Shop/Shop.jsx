@@ -49,22 +49,24 @@ const Shop = () => {
         addToDb(product.id);
     };
     
-    const deleteItem = (product) => {
-        // const getId = myProduct.find(p => p.id === product.id);
-        removeFromDb(product.id);
-        setReItem(!reItem);
+    // const deleteItem = (product) => {
+    //     // const getId = myProduct.find(p => p.id === product.id);
+    //     removeFromDb(product.id);
+    //     setReItem(!reItem);
 
-    }
+    // }
 
     return (
         <div className='flex mt-28'>
             <div className='md:pl-24 p-4 md:pr-6 w-2/3 md:w-4/5 md:grid md:grid-cols-3 gap-5'>
                 {
-                    data.map(p => <Card addToCard={addToCard} deleteItem={deleteItem} product={p} key={p.id}></Card>)
+                    data.map(p => <Card addToCard={addToCard}  product={p} key={p.id}></Card>)
                 }
             </div>
-            <div className='md:w-1/5 w-1/3 fixed top-[75px] right-0 h-screen bg-lime-200'>
-                <AddToCard addToCard={myProduct}></AddToCard>
+            <div className=''>
+                <AddToCard addToCard={myProduct}>
+                    <button className='bg-[#ba8639] rounded-xl w-full py-3 hover:bg-amber-500'>Review order</button>
+                </AddToCard>
             </div>
         </div>
     );

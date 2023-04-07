@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../../images/Logo.svg';
 import { BiMenu, BiX } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [icon, setIcon] = useState(false);
@@ -11,10 +12,10 @@ const Header = () => {
             <button className='md:hidden' onClick={() => setIcon(!icon)}>{icon ? <BiX className='bg-white rounded-sm w-7 h-7'></BiX> : <BiMenu className='bg-white rounded-sm w-7 h-7'></BiMenu>}</button>
             
             <div className={`flex flex-col text-cyan-200 md:flex-row absolute md:sticky md:bg-slate-800 gap-6 bg-blue-500 p-4 rounded-xl ${icon? 'top-0': '-top-64'}`}>
-                <a href="/Order">Order</a>
-                <a href="/Order Review">Order Review</a>
-                <a href="/Manage Inventory">Manage Inventory</a>              
-                <a href="/Login">Login</a>
+                <Link to="/">Shop</Link>
+                <Link to="/order">Order</Link>
+                <Link to="/Manage Inventory">Manage Inventory</Link>              
+                <Link to="/Login">Login</Link>
             </div>
         </nav>
     );
