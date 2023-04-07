@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
-const AddToCard = ({addToCard, children}) => {
+const AddToCard = ({addToCard, handleClearCard, children}) => {
     // const addToCard = props.addToCard;
     // console.log(addToCard);
     let total = 0;
@@ -26,9 +26,9 @@ const AddToCard = ({addToCard, children}) => {
                 <p>Total Shipping Charge: ${totalShipping}</p>
                 <p>Tax: ${totalTax.toFixed(2)}</p>
                 <h4>Grand Total: ${grandTotal.toFixed(2)}</h4>
-                <button onClick={() => localStorage.removeItem('shopping-cart')} className='bg-[#cb9340] rounded-xl mt-7 w-full py-3 hover:bg-amber-500'>Clear Cart <FontAwesomeIcon icon={faTrashCan} /></button>
+                <button onClick={() => handleClearCard()} className='bg-[#cb9340] rounded-xl mt-7 w-full py-3 hover:bg-amber-500'>Clear Cart <FontAwesomeIcon icon={faTrashCan} /></button>
                 <br />
-                {/* <button className='bg-[#ba8639] rounded-xl w-full py-3 hover:bg-amber-500'>Review Order <FontAwesomeIcon icon={faArrowRight} /></button> */}
+                
                 {children}
             </div>
         </div>

@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import AddToCard from '../AddTo/AddToCard';
 import OrderItem from '../OrderItem/OrderItem';
 import { removeFromDb } from '../../utilities/fakedb';
+import ReviewItem from '../ReviewItem/ReviewItem';
 
 const Order = () => {
     const saveCard = useLoaderData();
@@ -25,7 +26,7 @@ const Order = () => {
             </div>
             <div>
                 <AddToCard addToCard={card}>
-                    <button className='bg-[#ba8639] rounded-xl w-full py-3 hover:bg-amber-500'>Chack out</button>
+                    <Link to="/chackOut"><button className='bg-[#ba8639] rounded-xl w-full py-3 hover:bg-amber-500'>Chack out</button></Link>
                 </AddToCard>
             </div>
         </div>

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { addToDb, getShoppingCart, removeFromDb } from '../../utilities/fakedb';
+import { addToDb, deleteShoppingCart, getShoppingCart, removeFromDb } from '../../utilities/fakedb';
 import AddToCard from '../AddTo/AddToCard';
 import Card from '../Card/Card';
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
     const [data, setData] = useState([]);
@@ -49,23 +50,21 @@ const Shop = () => {
         addToDb(product.id);
     };
     
-    // const deleteItem = (product) => {
-    //     // const getId = myProduct.find(p => p.id === product.id);
-    //     removeFromDb(product.id);
-    //     setReItem(!reItem);
-
-    // }
+    const handleClearCard = () => {
+        setMyProduct([]);
+        deleteShoppingCart();
+    }
 
     return (
         <div className='flex mt-28'>
             <div className='md:pl-24 p-4 md:pr-6 w-2/3 md:w-4/5 md:grid md:grid-cols-3 gap-5'>
                 {
-                    data.map(p => <Card addToCard={addToCard}  product={p} key={p.id}></Card>)
+                    data.slice(0, 9).map(p => <Card addToCard={addToCard}  product={p} key={p.id}></Card>)
                 }
             </div>
             <div className=''>
-                <AddToCard addToCard={myProduct}>
-                    <button className='bg-[#ba8639] rounded-xl w-full py-3 hover:bg-amber-500'>Review order</button>
+                <AddToCard addToCard={myProduct} handleClearCard={handleClearCard}>
+                    <Link to="/reviewItem"><button className='bg-[#ba8639] rounded-xl w-full py-3 hover:bg-amber-500'>Review order</button></Link>
                 </AddToCard>
             </div>
         </div>

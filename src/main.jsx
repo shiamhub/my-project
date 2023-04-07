@@ -7,6 +7,8 @@ import Header from './components/Header/Header'
 import Shop from './components/Shop/Shop'
 import Order from './components/Order/Order'
 import loadAddOrder from './loader/loadAddOrder'
+import ChackOut from './components/ChackOut/ChackOut'
+import ReviewItem from './components/ReviewItem/ReviewItem'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,15 @@ const router = createBrowserRouter([
       {
         path: 'order',
         element: <Order></Order>,
+        loader: loadAddOrder,
+      },
+      {
+        path: 'chackOut',
+        element: <ChackOut></ChackOut>
+      },
+      {
+        path: 'reviewItem',
+        element: <ReviewItem></ReviewItem>,
         loader: loadAddOrder,
       }
     ]
