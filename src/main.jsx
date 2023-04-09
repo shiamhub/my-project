@@ -9,11 +9,13 @@ import Order from './components/Order/Order'
 import loadAddOrder from './loader/loadAddOrder'
 import ChackOut from './components/ChackOut/ChackOut'
 import ReviewItem from './components/ReviewItem/ReviewItem'
+import Analyses from './components/Analyses/Analyses'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App></App>,
+    loader: loadAddOrder,
     children: [
       {
         path: '/',
@@ -31,6 +33,11 @@ const router = createBrowserRouter([
       {
         path: 'reviewItem',
         element: <ReviewItem></ReviewItem>,
+        loader: loadAddOrder,
+      },
+      {
+        path: 'analyses',
+        element: <Analyses></Analyses>,
         loader: loadAddOrder,
       }
     ]

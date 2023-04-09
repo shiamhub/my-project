@@ -1,19 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import OrderItem from '../OrderItem/OrderItem';
 import { useLoaderData } from 'react-router-dom';
 import { removeFromDb } from '../../utilities/fakedb';
+import { CardPass, HandleRePass } from '../../App';
 
 const ReviewItem = () => {
-    const saveCard = useLoaderData();
-    const [card, setCard] = useState(saveCard);
-    console.log(saveCard);
-
-    const handleRemoveCard = (id) => {
-        console.log(id);
-        const remaining = card.filter(product => product.id !== id);
-        setCard(remaining);
-        removeFromDb(id);
-    }
+    const handleRemoveCard = useContext(HandleRePass)
+    const [card, setCard] = useContext(CardPass)
+    console.log(card);
 
     return (
         <div className='mt-24'>

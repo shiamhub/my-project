@@ -13,7 +13,6 @@ const loadAddOrder = async() => {
             addedOrder.quantity = quantity;
             saveCard.push(addedOrder);
         }
-
     }
     return saveCard;
 };

@@ -31,7 +31,7 @@ const Shop = () => {
     }, [data, reItem]);
 
     const addToCard = (product) => {
-        console.log(product)
+        // console.log(product)
         // setMyProduct([...myProduct, product]);
         let add = [];
         const exists = myProduct.find((p) => p.id === product.id);
@@ -44,7 +44,7 @@ const Shop = () => {
         else {
             product.quantity = 1;
             add = [...myProduct, product];
-            console.log(add);
+            // console.log(add);
         }
         setMyProduct(add);
         addToDb(product.id);
