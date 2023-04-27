@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { HandleRePass } from '../../App';
 
-const OrderItem = ({ product, handleRemoveCard }) => {
+const OrderItem = ({ product }) => {
+    const handleRemoveCard = useContext(HandleRePass);
+
     const { img, id, name, quantity, price } = product;
     return (
         <div className='flex flex-col md:flex-row gap-3  p-2 border-2 mb-4 rounded-xl mx-6 md:mx-44'>

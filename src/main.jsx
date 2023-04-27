@@ -10,6 +10,11 @@ import loadAddOrder from './loader/loadAddOrder'
 import ChackOut from './components/ChackOut/ChackOut'
 import ReviewItem from './components/ReviewItem/ReviewItem'
 import Analyses from './components/Analyses/Analyses'
+import Login from './components/Login/Login'
+import Signup from './components/Signup/Signup'
+import AuthProvider, { AuthContext } from './provider/AuthProvider'
+import Manage from './components/Manage/Manage'
+import PrivateRoute from './route/PrivateRoute'
 
 const router = createBrowserRouter([
   {
@@ -24,11 +29,14 @@ const router = createBrowserRouter([
       {
         path: 'order',
         element: <Order></Order>,
-        loader: loadAddOrder,
       },
       {
         path: 'chackOut',
-        element: <ChackOut></ChackOut>
+        element: <PrivateRoute><ChackOut></ChackOut></PrivateRoute>
+      },
+      {
+        path: 'manage',
+        element: <PrivateRoute><Manage></Manage></PrivateRoute>
       },
       {
         path: 'reviewItem',
@@ -39,13 +47,24 @@ const router = createBrowserRouter([
         path: 'analyses',
         element: <Analyses></Analyses>,
         loader: loadAddOrder,
+      },
+      {
+        path: "login",
+        element: <Login></Login>
+      },
+      {
+        path: 'signup',
+        element: <Signup></Signup>,
       }
     ]
-  }
+  },
+  
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )
