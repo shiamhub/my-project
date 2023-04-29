@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiFillFacebook, AiFillGithub, AiFillGooglePlusSquare } from 'react-icons/ai';
 import { getAuth } from 'firebase/auth';
@@ -7,7 +7,9 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 const auth = getAuth(app);
 const Login = () => {
-    const {signIn, googleSignIn, gitHubSignIn, facebookSignIn} = useContext(AuthContext);
+    
+
+    const {signIn, googleSignIn, gitHubSignIn, facebookSignIn, user} = useContext(AuthContext);
     const [name, setName] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -31,7 +33,6 @@ const Login = () => {
             setSuccess('Your account has been created successfully');
             setName(loggedUser.displayName);
             console.log(loggedUser);
-            navigate(from, {replace: true});
         })
         .catch(error => {
             setError(error.message)
@@ -71,6 +72,12 @@ const Login = () => {
             console.log(error)
         })
     }
+
+    useEffect( () => {
+        if(user) {
+            navigate(from, {replace: true});
+        }
+    }, [user])
 
     return (
         <div>
